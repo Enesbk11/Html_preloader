@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Load</title>
+  </head>
+
+  <style>
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+      transition: opacity 0.75s, visibility 0.75s;
+    }
+    .ring {
+      width: 200px;
+      height: 200px;
+      border: 0px solid black;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .ring:nth-child(1) {
+      border-bottom-width: 8px;
+      border-color: #f40009;
+      animation: rotate1 2s linear infinite;
+    }
+    .ring:nth-child(2) {
+      border-right-width: 8px;
+      border-color: #30d5c8;
+      animation: rotate2 2s linear infinite;
+    }
+    .ring:nth-child(3) {
+      border-left-width: 8px;
+      border-color: #3fff00;
+      animation: rotate3 2s linear infinite;
+    }
+
+    .loader-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @keyframes rotate1 {
+      0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+      }
+    }
+    @keyframes rotate2 {
+      0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+      }
+    }
+    @keyframes rotate3 {
+      0% {
+        transform: rotateX(33deg) rotateY(55deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+      }
+    }
+    /* .loader::after{
+        content: "";
+        width: 75px;
+        height: 75px;
+        border: 15px solid #dddd;
+        border-top: 16px solid #ffff00;
+        border-right: 16px solid #30d5c8;
+        border-bottom: 16px solid red;
+        border-left: 16px solid #00ff00;
+        border-radius: 50%;
+        animation: loading 0.75s ease infinite;
+    }
+    @keyframes loading{
+        from{
+            transform: rotate(0turn);
+        }
+        to{
+            transform: rotate(1turn);
+        }
+
+    } */
+  </style>
+  <body>
+    <h2>Enes Bagkesen</h2>
+    <a href="about">About</a>
+    <br />
+
+    <div class="loader">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.querySelector(".loader");
+        loader.classList.add("loader-hidden");
+        loader.addEventListener("transitionend", () => {
+          // document.body.removeChild("loader");
+        });
+      });
+    </script>
+  </body>
+</html>
